@@ -4,12 +4,13 @@ import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/users.module';
 import { ErrorHandlingMiddleware } from '../../middlewares/error-handling.middleware';
 import { JwtModule } from '@nestjs/jwt';
-import { JwtStrategy } from './jwt.strategy';
+import { JwtStrategy } from './strategies/jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { AppConfigModule } from '../../config/app/config.module';
 import { AppConfigService } from '../../config/app/config.service';
 import { S3Module } from '../s3/s3.module';
 import { ImagesModule } from '../images/images.module';
+import { GoogleStrategy } from './strategies/google.strategy';
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { ImagesModule } from '../images/images.module';
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy, GoogleStrategy],
 })
 export class AuthModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

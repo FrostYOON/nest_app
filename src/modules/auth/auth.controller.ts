@@ -7,6 +7,8 @@ import {
   UseInterceptors,
   UploadedFile,
   UseGuards,
+  Get,
+  Req,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
@@ -16,9 +18,10 @@ import { LogInDto } from './dto/log-in.dto';
 import { RequestOrigin } from '../../decorators/request-origin.decorator';
 import { Response } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { JwtAuthGuard } from './jwt-auth.guard';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { RequestUser } from '../../decorators/request-user.decorator';
 import { User } from '../users/entities/user.entity';
+import { GoogleAuthGuard } from './guards/google-auth.guard';
 
 @ApiTags('인증')
 @Controller('auth')
@@ -65,6 +68,30 @@ export class AuthController {
 
     return res.json({
       message: '로그인 성공',
+      accessToken,
+      refreshToken,
+    });
+  }
+
+  @Get('login/google')
+  @UseGuards(GoogleAuthGuard)
+  async googleLogIn(@Req() req: Request) {}
+
+  @Get('login/google/callback')
+  @UseGuards(GoogleAuthGuard)
+  googleLogInCallback(
+    @RequestUser() user: User,
+    @RequestOrigin() requestOrigin: string,
+    @Res() res: Response,
+  ) {
+    const { accessToken, refreshToken, accessOptions, refreshOptions } =
+      this.authService.googleLogIn(user.email, requestOrigin);
+
+    res.cookie('Authentication', accessToken, accessOptions);
+    res.cookie('Refresh', refreshToken, refreshOptions);
+
+    return res.json({
+      message: '구글 로그인 성공',
       accessToken,
       refreshToken,
     });

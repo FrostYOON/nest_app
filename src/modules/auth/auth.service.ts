@@ -39,20 +39,25 @@ export class AuthService {
       );
     }
 
+    return this.jwtTokenBuilder(logInDto.email, requestOrigin);
+  }
+
+  googleLogIn(email: string, requestOrigin: string) {
+    return this.jwtTokenBuilder(email, requestOrigin);
+  }
+
+  jwtTokenBuilder(email: string, requestOrigin: string) {
     const { accessToken, accessOptions } = this.setJwtAccessToken(
-      user.id,
-      user.email,
+      email,
       requestOrigin,
     );
     const { refreshToken, refreshOptions } = this.setJwtRefreshToken(
-      user.id,
-      user.email,
+      email,
       requestOrigin,
     );
 
     return {
       message: '로그인 성공',
-      user,
       accessToken,
       refreshToken,
       accessOptions,
@@ -83,8 +88,8 @@ export class AuthService {
   }
 
   // JWT 토큰 발급
-  setJwtAccessToken(id: string, email: string, requestDomain: string) {
-    const payload = { sub: id, email };
+  setJwtAccessToken(email: string, requestDomain: string) {
+    const payload = { email };
     const maxAge = 1000 * 60 * 60; // 1 hour
     const accessToken = this.jwtService.sign(payload, {
       secret: this.appConfigService.jwtSecret,
@@ -96,8 +101,8 @@ export class AuthService {
     };
   }
 
-  setJwtRefreshToken(id: string, email: string, requestDomain: string) {
-    const payload = { sub: id, email };
+  setJwtRefreshToken(email: string, requestDomain: string) {
+    const payload = { email };
     const maxAge = 1000 * 60 * 60 * 24 * 30; // 30 days
     const refreshToken = this.jwtService.sign(payload, {
       secret: this.appConfigService.jwtRefreshSecret,

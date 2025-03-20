@@ -2,7 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from './entities/user.entity';
+import { User, RegisterType } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
@@ -25,6 +25,19 @@ export class UsersService {
       throw new UnauthorizedException(
         '이메일 또는 비밀번호가 일치하지 않습니다.',
       );
+    }
+    return user;
+  }
+
+  async findUserBySocialId(
+    socialId: string,
+    registerType: RegisterType,
+  ): Promise<User> {
+    const user = await this.usersRepository.findOne({
+      where: { socialId, registerType },
+    });
+    if (!user) {
+      throw new Error('가입되지 않은 유저입니다.');
     }
     return user;
   }

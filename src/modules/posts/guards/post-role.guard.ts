@@ -39,7 +39,7 @@ export class PostRoleGuard implements CanActivate {
       throw new NotFoundException('게시글 작성자 정보를 찾을 수 없습니다.');
     }
 
-    if (user.id !== post.user.id || user.role !== UserRole.ADMIN) {
+    if (user.id !== post.user.id && user.role !== UserRole.ADMIN) {
       throw new ForbiddenException('해당 게시글에 대한 권한이 없습니다.');
     }
 

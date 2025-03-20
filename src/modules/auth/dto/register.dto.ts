@@ -3,8 +3,11 @@ import {
   IsNotEmpty,
   IsString,
   IsStrongPassword,
+  IsOptional,
+  IsEnum,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { RegisterType } from '../../users/entities/user.entity';
 
 export class RegisterDto {
   @IsNotEmpty()
@@ -16,7 +19,7 @@ export class RegisterDto {
   })
   email: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsStrongPassword({
     minLength: 8,
     minLowercase: 1,
@@ -39,4 +42,12 @@ export class RegisterDto {
     example: '홍길동',
   })
   name: string;
+
+  @IsOptional()
+  @IsString()
+  socialId: string;
+
+  @IsOptional()
+  @IsEnum(RegisterType)
+  registerType: RegisterType;
 }

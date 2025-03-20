@@ -21,7 +21,7 @@ import {
 } from '@nestjs/swagger';
 import { RequestUser } from 'src/decorators/request-user.decorator';
 import { User } from '../users/entities/user.entity';
-import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
+import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard';
 import { ListAllCommentsDto } from './dto/list-all-comment.dto';
 import { LikeCommentDto } from './dto/like-comment.dto';
 import { CommentRoleGuard } from './guards/comment-role.guard';
