@@ -1,9 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    DB_HOST: 172.31.43.36
-
 phases:
   install:
     runtime-versions:
@@ -12,7 +8,6 @@ phases:
       - echo "Installing dependencies..."
       - npm install 
       - npm install -g @nestjs/cli
-      - npm install --save @types/express @types/express-serve-static-core @types/multer
 
   build:
     commands:
