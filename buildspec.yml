@@ -9,6 +9,13 @@ phases:
       - npm install 
       - npm install -g @nestjs/cli
 
+  pre_build:
+    commands:
+      - echo "🔍 Running connectivity tests..."
+      - echo "DNS 확인:" && nslookup $DB_HOST
+      - echo "Ping 테스트:" && ping -c 4 $DB_HOST || echo "❌ Ping 실패"
+      - echo "포트 연결 테스트:" && nc -zv $DB_HOST 5432 || echo "❌ 포트 5432 연결 실패"
+
   build:
     commands:
       - echo "Building NestJS application..."
