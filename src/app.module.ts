@@ -14,6 +14,7 @@ import { AppDataSource } from './ormConfig';
 import { PostsModule } from './modules/posts/posts.module';
 import { CommentsModule } from './modules/comments/comments.module';
 import { ImagesModule } from './modules/images/images.module';
+import { SocialConfigModule } from './config/social/config.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ImagesModule } from './modules/images/images.module';
     DbConfigModule,
     AppConfigModule,
     AwsConfigModule,
+    SocialConfigModule,
     S3Module,
     PostsModule,
     CommentsModule,

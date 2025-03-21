@@ -32,7 +32,7 @@ export class RegisterDto {
     description: '비밀번호',
     example: '!Password123',
   })
-  password: string;
+  password?: string;
 
   @IsNotEmpty()
   @IsString()
@@ -45,9 +45,9 @@ export class RegisterDto {
 
   @IsOptional()
   @IsString()
-  socialId: string;
+  socialId?: string;
 
   @IsOptional()
   @IsEnum(RegisterType)
-  registerType: RegisterType;
+  registerType?: RegisterType;
 }

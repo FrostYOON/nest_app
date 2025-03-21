@@ -32,13 +32,9 @@ export class UsersService {
   async findUserBySocialId(
     socialId: string,
     registerType: RegisterType,
-  ): Promise<User> {
-    const user = await this.usersRepository.findOne({
+  ): Promise<User | null> {
+    return await this.usersRepository.findOne({
       where: { socialId, registerType },
     });
-    if (!user) {
-      throw new Error('가입되지 않은 유저입니다.');
-    }
-    return user;
   }
 }

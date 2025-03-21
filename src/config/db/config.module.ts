@@ -16,6 +16,7 @@ import { DbConfigService } from './config.service';
         DATABASE_NAME: Joi.string().required(),
         NODE_ENV: Joi.string().required(),
       }),
+      isGlobal: true,
     }),
   ],
   providers: [ConfigService, DbConfigService],

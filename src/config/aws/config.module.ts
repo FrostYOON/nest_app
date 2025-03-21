@@ -14,6 +14,7 @@ import { AwsConfigService } from './config.service';
         AWS_BUCKET_NAME: Joi.string().required(),
         AWS_REGION: Joi.string().required(),
       }),
+      isGlobal: true,
     }),
   ],
   providers: [ConfigService, AwsConfigService],

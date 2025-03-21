@@ -11,13 +11,14 @@ import { AppConfigService } from '../../config/app/config.service';
 import { S3Module } from '../s3/s3.module';
 import { ImagesModule } from '../images/images.module';
 import { GoogleStrategy } from './strategies/google.strategy';
-
+import { SocialConfigModule } from '../../config/social/config.module';
 @Module({
   imports: [
     AppConfigModule,
     UsersModule,
     S3Module,
     ImagesModule,
+    SocialConfigModule,
     JwtModule.registerAsync({
       imports: [AppConfigModule],
       useFactory: (appConfigService: AppConfigService) => ({
