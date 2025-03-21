@@ -8,9 +8,7 @@ phases:
       - echo "Installing dependencies..."
       - npm install 
       - npm install -g @nestjs/cli
-      - npm install -save @types/express
-      - npm install -save @types/express-serve-static-core
-      - npm install -save @types/multer
+      - npm install --save @types/express @types/express-serve-static-core @types/multer
 
   build:
     commands:
