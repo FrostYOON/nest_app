@@ -12,6 +12,11 @@ phases:
   pre_build:
     commands:
       - echo "🔍 Running connectivity tests..."
+      - echo "🔍 환경 변수 확인:"
+      - echo "DB_HOST = $DB_HOST"
+      - echo "DB_PORT = $DB_PORT"
+      - echo "DB_USERNAME = $DB_USERNAME"
+      - echo "DB_NAME = $DB_NAME"
 
   build:
     commands:
