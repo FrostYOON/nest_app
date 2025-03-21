@@ -15,6 +15,7 @@ import {
   ApiBody,
   ApiBearerAuth,
 } from '@nestjs/swagger';
+import { Express } from 'express';
 @ApiTags('Images')
 @Controller('images')
 export class ImagesController {
