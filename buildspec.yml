@@ -13,10 +13,10 @@ phases:
     commands:
       - echo "🔍 Running connectivity tests..."
       - echo "🔍 환경 변수 확인:"
-      - echo "DB_HOST = $DB_HOST"
-      - echo "DB_PORT = $DB_PORT"
-      - echo "DB_USERNAME = $DB_USERNAME"
-      - echo "DB_NAME = $DB_NAME"
+      - echo "DATABASE_HOST = $DATABASE_HOST"
+      - echo "DATABASE_PORT = $DATABASE_PORT"
+      - echo "DATABASE_USERNAME = $DATABASE_USER"
+      - echo "DATABASE_NAME = $DATABASE_NAME"
 
   build:
     commands:
