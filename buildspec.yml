@@ -16,7 +16,7 @@ phases:
 
   post_build:
     commands:
-      - echo "Running database migration...!"
+      - echo "Running database migration..!!"
       - npm run migration:run 
       - echo "Build completed successfully!"
 
