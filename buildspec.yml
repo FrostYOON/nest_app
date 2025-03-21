@@ -9,15 +9,6 @@ phases:
       - npm install 
       - npm install -g @nestjs/cli
 
-  pre_build:
-    commands:
-      - echo "🔍 Running connectivity tests..."
-      - echo "🔍 환경 변수 확인:"
-      - echo "DATABASE_HOST = $DATABASE_HOST"
-      - echo "DATABASE_PORT = $DATABASE_PORT"
-      - echo "DATABASE_USERNAME = $DATABASE_USER"
-      - echo "DATABASE_NAME = $DATABASE_NAME"
-
   build:
     commands:
       - echo "Building NestJS application..."
