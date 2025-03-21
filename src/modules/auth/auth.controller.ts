@@ -116,19 +116,19 @@ export class AuthController {
     });
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Post('upload-profile')
-  @UseInterceptors(FileInterceptor('file'))
-  @ApiOperation({
-    summary: '프로필 이미지 업로드',
-    description: '프로필 이미지를 업로드합니다.',
-  })
-  async uploadProfile(
-    @UploadedFile() file: Express.Multer.File,
-    @RequestUser() user: User,
-  ) {
-    return {
-      url: await this.authService.uploadProfile(file),
-    };
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Post('upload-profile')
+  // @UseInterceptors(FileInterceptor('file'))
+  // @ApiOperation({
+  //   summary: '프로필 이미지 업로드',
+  //   description: '프로필 이미지를 업로드합니다.',
+  // })
+  // async uploadProfile(
+  //   @UploadedFile() file: Express.Multer.File,
+  //   @RequestUser() user: User,
+  // ) {
+  //   return {
+  //     url: await this.authService.uploadProfile(file),
+  //   };
+  // }
 }

@@ -121,7 +121,7 @@ export class AuthService {
     };
   }
 
-  async uploadProfile(file: Express.Multer.File) {
-    return await this.imagesService.uploadImage(file);
-  }
+  // async uploadProfile(file: Express.Multer.File) {
+  //   return await this.imagesService.uploadImage(file);
+  // }
 }
