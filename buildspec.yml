@@ -12,11 +12,6 @@ phases:
       - npm install -D @types/express-serve-static-core
       - npm install -D @types/multer
 
-  pre_build:
-    commands:
-      - echo "Running database migration..."
-      - npm run migration:run 
-
   build:
     commands:
       - echo "Building NestJS application..."
@@ -24,6 +19,8 @@ phases:
 
   post_build:
     commands:
+      - echo "Running database migration..."
+      - npm run migration:run 
       - echo "Build completed successfully!"
 
 artifacts:
