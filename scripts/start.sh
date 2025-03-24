@@ -11,4 +11,4 @@ cd $APP_DIR
 pm2 stop $APP_NAME
 pm2 start dist/main.js --name $APP_NAME
 
-echo "Application started successfully!"
+echo "Application started successfully!!"
