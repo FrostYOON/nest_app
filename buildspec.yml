@@ -13,11 +13,11 @@ phases:
     commands:
       - echo "Running database migration..."
       - npm run migration:run 
-      - echo "Build completed successfully!!"
+      - echo "Build completed successfully!"
 
   build:
     commands:
-      - echo "Building NestJS application...!"
+      - echo "Building NestJS application..."
       - npm run build
 
 artifacts:
