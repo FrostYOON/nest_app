@@ -23,7 +23,7 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   logging: true,
   ssl:
-    process.env.NODE_ENV === 'production'
+    dbConfigService.nodeEnv === 'production'
       ? {
           rejectUnauthorized: false,
         }
