@@ -22,8 +22,11 @@ export const AppDataSource = new DataSource({
   migrations,
   synchronize: false,
   logging: true,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl:
+    process.env.NODE_ENV === 'production'
+      ? {
+          rejectUnauthorized: false,
+        }
+      : false,
   subscribers: [PostViewSubscriber, CommentSubscriber, UserSubscriber],
 });
