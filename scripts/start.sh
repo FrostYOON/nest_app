@@ -13,6 +13,8 @@ npm install
 npm run build
 
 # pm2 사용하여 애플리케이션 시작
+pm2 stop $APP_NAME
+pm2 delete $APP_NAME
 pm2 start dist/main.js --name $APP_NAME
 pm2 status
 
